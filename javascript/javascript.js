@@ -149,7 +149,7 @@ function showWeatherOfDefaultCity(response) {
 
 let apiKey = "7ed26a6948c661d05fafe7355b41b2ec";
 let defaultCity = "Hong Kong";
-let imperialUnit = "units=imperial";
+/*let imperialUnit = "units=imperial";*/
 let metricUnit = "units=metric";
 let defaultCityApiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${defaultCity}&appid=${apiKey}&${metricUnit}`;
 axios.get(defaultCityApiUrl).then(showWeatherOfDefaultCity);
@@ -207,7 +207,7 @@ function showCity(event) {
   let userEntryCity = document.querySelector("#inputed-city");
   let userEntryCityValue = userEntryCity.value;
   let apiKey = "7ed26a6948c661d05fafe7355b41b2ec";
-  let imperialUnit = "units=imperial";
+  /* let imperialUnit = "units=imperial";*/
   let metricUnit = "units=metric";
   let searchCityApiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${userEntryCityValue}&appid=${apiKey}&${metricUnit}`;
   axios.get(searchCityApiUrl).then(showWeather);
@@ -266,7 +266,7 @@ function showWeatherOfUserCurrentLocation(response) {
 
 function showCurrentLocation(position) {
   let apiKey = "7ed26a6948c661d05fafe7355b41b2ec";
-  let imperialUnit = "units=imperial";
+  /* let imperialUnit = "units=imperial"; */
   let metricUnit = "units=metric";
   let lat = position.coords.latitude;
   let lon = position.coords.longitude;
