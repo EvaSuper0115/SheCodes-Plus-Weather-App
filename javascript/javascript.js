@@ -90,9 +90,22 @@ timeNow.innerHTML = `${time}`;
 //Default city details(when first opening the website)
 
 function showWeatherOfDefaultCity(response) {
-  console.log(response.data.coord.lat);
+  console.log(response.data);
+  console.log(response.data.weather[0].icon);
+  //efforts of trying to get the time of the destination city(not working)
+  /*console.log(response.data.coord.lat);
   console.log(response.data.coord.lon);
+  console.log(response.data.dt);
+  console.log(response.data.timezone);
+  let destinationTimeDifference = response.data.timezone;
 
+  let destinationTime = new Date();
+  destinationTime.setDate(now.getDate() + 0.3);
+  console.log(destinationTime);
+  let destinationTimeNow = destinationTime.toLocaleTimeString();
+  console.log(destinationTimeNow);
+*/
+  //
   let displayDefaultCityName = document.querySelector("#user-inputed-city");
   displayDefaultCityName.innerHTML = `${response.data.name}`;
 
@@ -100,6 +113,12 @@ function showWeatherOfDefaultCity(response) {
   celsiusDegreeOfDefaultCity.innerHTML = `${Math.round(
     response.data.main.temp
   )}`;
+
+  let weatherIcon = document.querySelector("#weatherNowIcon");
+  weatherIcon.setAttribute(
+    "src",
+    `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
 
   let weatherDetailLine01 = document.querySelector("#weatherDetail-1");
   weatherDetailLine01.innerHTML = `${response.data.weather[0].description}`;
@@ -145,6 +164,12 @@ function showWeather(response) {
   celsiusDegreeOfUserSearch.innerHTML = `${Math.round(
     response.data.main.temp
   )}`;
+
+  let weatherIcon = document.querySelector("#weatherNowIcon");
+  weatherIcon.setAttribute(
+    "src",
+    `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
 
   let weatherDetailLine01 = document.querySelector("#weatherDetail-1");
   weatherDetailLine01.innerHTML = `${response.data.weather[0].description}`;
@@ -196,6 +221,12 @@ function showWeatherOfUserCurrentLocation(response) {
 
   let celsiusDegreeOfUserCity = document.querySelector("#degree-number");
   celsiusDegreeOfUserCity.innerHTML = `${Math.round(response.data.main.temp)}`;
+
+  let weatherIcon = document.querySelector("#weatherNowIcon");
+  weatherIcon.setAttribute(
+    "src",
+    `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
 
   let weatherDetailLine01 = document.querySelector("#weatherDetail-1");
   weatherDetailLine01.innerHTML = `${response.data.weather[0].description}`;

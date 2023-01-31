@@ -126,9 +126,9 @@ body {
   font-size: 45px;
 }
 .degreeNowIcon {
-  margin: 15px 10px;
-  text-align: center;
-  font-size: 55px;
+  display: block;
+  margin: 0 auto;
+  width: 64px;
 }
 .weatherDetails {
   font-size: 19px;
