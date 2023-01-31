@@ -103,6 +103,7 @@ function showWeatherOfDefaultCity(response) {
   console.log(destinationTimeNow);
 */
   //
+
   let displayDefaultCityName = document.querySelector("#user-inputed-city");
   displayDefaultCityName.innerHTML = `${response.data.name}`;
   //for reference for degree settings(see the global variable) at the bottom of page
@@ -157,6 +158,12 @@ axios.get(defaultCityApiUrl).then(showWeatherOfDefaultCity);
 
 //allow user to search for city as an input in the form
 function showWeather(response) {
+  //because celsius sign is a default active unit, and fahrenheit is not, "active" here means bold and bigger
+
+  celsiusDegreeSign.classList.add("active");
+
+  fahrenheitDegreeSign.classList.remove("active");
+  //
   let displayCityName = document.querySelector("#user-inputed-city");
   displayCityName.innerHTML = `${response.data.name}`;
   //for reference for degree settings(see the global variable) at the bottom of page
@@ -220,6 +227,12 @@ citySearchForm.addEventListener("submit", showCity);
 
 //allow user to click current location button
 function showWeatherOfUserCurrentLocation(response) {
+  //because celsius sign is a default active unit, and fahrenheit is not, "active" here means bold and bigger
+
+  celsiusDegreeSign.classList.add("active");
+
+  fahrenheitDegreeSign.classList.remove("active");
+  //
   let displayCityName = document.querySelector("#user-inputed-city");
   displayCityName.innerHTML = `${response.data.name}`;
   //for reference for degree settings(see the global variable) at the bottom of page
@@ -294,9 +307,15 @@ let celsius = null;
 let highestCelsius = null;
 let lowestCelsius = null;
 let feelsLikeCelsius = null;
+let celsiusDegreeSign = document.querySelector("#celsius");
+let fahrenheitDegreeSign = document.querySelector("#fahrenheit");
 
 function convertToFahrenheit(event) {
   event.preventDefault();
+
+  celsiusDegreeSign.classList.remove("active");
+
+  fahrenheitDegreeSign.classList.add("active");
 
   let fahrenheitDegreeNumber = document.querySelector("#degree-number");
   let fahrenheit = Math.round((celsius * 9) / 5 + 32);
@@ -320,6 +339,11 @@ fahrenheitConvertion.addEventListener("click", convertToFahrenheit);
 
 function convertToCelsius(event) {
   event.preventDefault();
+
+  celsiusDegreeSign.classList.add("active");
+
+  fahrenheitDegreeSign.classList.remove("active");
+
   let celsiusDegreeNumber = document.querySelector("#degree-number");
   celsiusDegreeNumber.innerHTML = `${celsius}`;
 
