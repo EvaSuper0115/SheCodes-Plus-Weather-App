@@ -83,15 +83,14 @@ let weekdayTomorrow5 = weekdays[fourDayAfterTomorrow.getDay()];
 let weekdayNextDay5 = document.querySelector("#weekday-nextday-5");
 weekdayNextDay5.innerHTML = `${weekdayTomorrow5}`;
 //time
-let timeNow = document.querySelector("#time-now");
-timeNow.innerHTML = `${time}`;
+
 //
 
 //Default city details(when first opening the website)
 
 function showWeatherOfDefaultCity(response) {
   console.log(response.data);
-  console.log(response.data.weather[0].icon);
+
   //efforts of trying to get the time of the destination city(not working)
   /*console.log(response.data.coord.lat);
   console.log(response.data.coord.lon);
@@ -145,6 +144,11 @@ function showWeatherOfDefaultCity(response) {
   weatherDetailLine04.innerHTML = `Feels Like: ${Math.round(
     response.data.main.feels_like
   )}°`;
+
+  let updatedTime = new Date(response.data.dt * 1000);
+  let formattedUpdatedTime = updatedTime.toLocaleTimeString();
+  let timeNow = document.querySelector("#last-updated-time");
+  timeNow.innerHTML = `${formattedUpdatedTime}`;
 }
 
 let apiKey = "7ed26a6948c661d05fafe7355b41b2ec";
@@ -196,6 +200,11 @@ function showWeather(response) {
   weatherDetailLine04.innerHTML = `Feels Like: ${Math.round(
     response.data.main.feels_like
   )}°`;
+
+  let updatedTime = new Date(response.data.dt * 1000);
+  let formattedUpdatedTime = updatedTime.toLocaleTimeString();
+  let timeNow = document.querySelector("#last-updated-time");
+  timeNow.innerHTML = `${formattedUpdatedTime}`;
 }
 
 function showCity(event) {
@@ -253,6 +262,11 @@ function showWeatherOfUserCurrentLocation(response) {
   weatherDetailLine04.innerHTML = `Feels Like: ${Math.round(
     response.data.main.feels_like
   )}°`;
+
+  let updatedTime = new Date(response.data.dt * 1000);
+  let formattedUpdatedTime = updatedTime.toLocaleTimeString();
+  let timeNow = document.querySelector("#last-updated-time");
+  timeNow.innerHTML = `${formattedUpdatedTime}`;
 }
 
 function showCurrentLocation(position) {

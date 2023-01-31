@@ -147,14 +147,20 @@ body {
 }
 
 #date,
-#time-now {
+#last-updated-time,
+#last-updated-title {
   text-align: center;
   color: #79797d;
 }
-#date {
+#last-updated-title {
   margin-top: 22px;
+  padding: 0;
+  font-size: 11px;
 }
-#time-now {
+#date {
+  margin-top: 2px;
+}
+#last-updated-time {
   margin-bottom: -13px;
 }
 .forecastPageTitle {
