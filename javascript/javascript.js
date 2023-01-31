@@ -318,16 +318,19 @@ function convertToFahrenheit(event) {
 let fahrenheitConvertion = document.querySelector("#fahrenheit");
 fahrenheitConvertion.addEventListener("click", convertToFahrenheit);
 
-/*function convertToCelsius() {
+function convertToCelsius(event) {
+  event.preventDefault();
   let celsiusDegreeNumber = document.querySelector("#degree-number");
-  celsiusDegreeNumber.innerHTML = `30`;
+  celsiusDegreeNumber.innerHTML = `${celsius}`;
 
   let celsiusHighestDegree = document.querySelector("#highest-degree");
-  celsiusHighestDegree.innerHTML = `34`;
+  celsiusHighestDegree.innerHTML = `Highest: ${highestCelsius}°`;
 
   let celsiusLowestDegree = document.querySelector("#lowest-degree");
-  celsiusLowestDegree.innerHTML = `27`;
+  celsiusLowestDegree.innerHTML = `Lowest: ${lowestCelsius}°`;
+
+  let celsiusFeelsLikeDegree = document.querySelector("#feels-like-degree");
+  celsiusFeelsLikeDegree.innerHTML = `Feels Like: ${feelsLikeCelsius}°`;
 }
 let celsiusConvertion = document.querySelector("#celsius");
 celsiusConvertion.addEventListener("click", convertToCelsius);
-*/
