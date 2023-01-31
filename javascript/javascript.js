@@ -89,21 +89,6 @@ weekdayNextDay5.innerHTML = `${weekdayTomorrow5}`;
 //Default city details(when first opening the website)
 
 function showWeatherOfDefaultCity(response) {
-  //efforts of trying to get the time of the destination city(not working)
-  /*console.log(response.data.coord.lat);
-  console.log(response.data.coord.lon);
-  console.log(response.data.dt);
-  console.log(response.data.timezone);
-  let destinationTimeDifference = response.data.timezone;
-
-  let destinationTime = new Date();
-  destinationTime.setDate(now.getDate() + 0.3);
-  console.log(destinationTime);
-  let destinationTimeNow = destinationTime.toLocaleTimeString();
-  console.log(destinationTimeNow);
-*/
-  //
-
   let displayDefaultCityName = document.querySelector("#user-inputed-city");
   displayDefaultCityName.innerHTML = `${response.data.name}`;
   //for reference for degree settings(see the global variable) at the bottom of page
