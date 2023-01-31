@@ -89,8 +89,6 @@ weekdayNextDay5.innerHTML = `${weekdayTomorrow5}`;
 //Default city details(when first opening the website)
 
 function showWeatherOfDefaultCity(response) {
-  console.log(response.data);
-
   //efforts of trying to get the time of the destination city(not working)
   /*console.log(response.data.coord.lat);
   console.log(response.data.coord.lon);
@@ -118,6 +116,7 @@ function showWeatherOfDefaultCity(response) {
     "src",
     `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
+  weatherIcon.setAttribute("alt", `icon-id-${response.data.weather[0].icon}`);
 
   let weatherDetailLine01 = document.querySelector("#weatherDetail-1");
   weatherDetailLine01.innerHTML = `${response.data.weather[0].description}`;
@@ -174,6 +173,7 @@ function showWeather(response) {
     "src",
     `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
+  weatherIcon.setAttribute("alt", `icon-id-${response.data.weather[0].icon}`);
 
   let weatherDetailLine01 = document.querySelector("#weatherDetail-1");
   weatherDetailLine01.innerHTML = `${response.data.weather[0].description}`;
@@ -236,6 +236,7 @@ function showWeatherOfUserCurrentLocation(response) {
     "src",
     `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
+  weatherIcon.setAttribute("alt", `icon-id-${response.data.weather[0].icon}`);
 
   let weatherDetailLine01 = document.querySelector("#weatherDetail-1");
   weatherDetailLine01.innerHTML = `${response.data.weather[0].description}`;
