@@ -112,9 +112,7 @@ function showWeatherOfDefaultCity(response) {
   feelsLikeCelsius = `${Math.round(response.data.main.feels_like)}`;
   //
   let celsiusDegreeOfDefaultCity = document.querySelector("#degree-number");
-  celsiusDegreeOfDefaultCity.innerHTML = `${Math.round(
-    response.data.main.temp
-  )}`;
+  celsiusDegreeOfDefaultCity.innerHTML = `${celsius}`;
 
   let weatherIcon = document.querySelector("#weatherNowIcon");
   weatherIcon.setAttribute(
@@ -135,19 +133,13 @@ function showWeatherOfDefaultCity(response) {
   )}mps`;
 
   let lowestDegree = document.querySelector("#lowest-degree");
-  lowestDegree.innerHTML = `Lowest: ${Math.round(
-    response.data.main.temp_min
-  )}°`;
+  lowestDegree.innerHTML = `Lowest: ${lowestCelsius}°`;
 
   let highestDegree = document.querySelector("#highest-degree");
-  highestDegree.innerHTML = `Highest: ${Math.round(
-    response.data.main.temp_max
-  )}°`;
+  highestDegree.innerHTML = `Highest: ${highestCelsius}°`;
 
   let weatherDetailLine04 = document.querySelector("#feels-like-degree");
-  weatherDetailLine04.innerHTML = `Feels Like: ${Math.round(
-    response.data.main.feels_like
-  )}°`;
+  weatherDetailLine04.innerHTML = `Feels Like: ${feelsLikeCelsius}°`;
 
   let updatedTime = new Date(response.data.dt * 1000);
   let formattedUpdatedTime = updatedTime.toLocaleTimeString();
@@ -175,9 +167,7 @@ function showWeather(response) {
   //
 
   let celsiusDegreeOfUserSearch = document.querySelector("#degree-number");
-  celsiusDegreeOfUserSearch.innerHTML = `${Math.round(
-    response.data.main.temp
-  )}`;
+  celsiusDegreeOfUserSearch.innerHTML = `${celsius}`;
 
   let weatherIcon = document.querySelector("#weatherNowIcon");
   weatherIcon.setAttribute(
@@ -198,19 +188,13 @@ function showWeather(response) {
   )}mps`;
 
   let lowestDegree = document.querySelector("#lowest-degree");
-  lowestDegree.innerHTML = `Lowest: ${Math.round(
-    response.data.main.temp_min
-  )}°`;
+  lowestDegree.innerHTML = `Lowest: ${lowestCelsius}°`;
 
   let highestDegree = document.querySelector("#highest-degree");
-  highestDegree.innerHTML = `Highest: ${Math.round(
-    response.data.main.temp_max
-  )}°`;
+  highestDegree.innerHTML = `Highest: ${highestCelsius}°`;
 
   let weatherDetailLine04 = document.querySelector("#feels-like-degree");
-  weatherDetailLine04.innerHTML = `Feels Like: ${Math.round(
-    response.data.main.feels_like
-  )}°`;
+  weatherDetailLine04.innerHTML = `Feels Like: ${feelsLikeCelsius}°`;
 
   let updatedTime = new Date(response.data.dt * 1000);
   let formattedUpdatedTime = updatedTime.toLocaleTimeString();
@@ -245,7 +229,7 @@ function showWeatherOfUserCurrentLocation(response) {
   feelsLikeCelsius = `${Math.round(response.data.main.feels_like)}`;
   //
   let celsiusDegreeOfUserCity = document.querySelector("#degree-number");
-  celsiusDegreeOfUserCity.innerHTML = `${Math.round(response.data.main.temp)}`;
+  celsiusDegreeOfUserCity.innerHTML = `${celsius}`;
 
   let weatherIcon = document.querySelector("#weatherNowIcon");
   weatherIcon.setAttribute(
@@ -266,19 +250,13 @@ function showWeatherOfUserCurrentLocation(response) {
   )}mps`;
 
   let lowestDegree = document.querySelector("#lowest-degree");
-  lowestDegree.innerHTML = `Lowest: ${Math.round(
-    response.data.main.temp_min
-  )}°`;
+  lowestDegree.innerHTML = `Lowest: ${lowestCelsius}°`;
 
   let highestDegree = document.querySelector("#highest-degree");
-  highestDegree.innerHTML = `Highest: ${Math.round(
-    response.data.main.temp_max
-  )}°`;
+  highestDegree.innerHTML = `Highest: ${highestCelsius}°`;
 
   let weatherDetailLine04 = document.querySelector("#feels-like-degree");
-  weatherDetailLine04.innerHTML = `Feels Like: ${Math.round(
-    response.data.main.feels_like
-  )}°`;
+  weatherDetailLine04.innerHTML = `Feels Like: ${feelsLikeCelsius}°`;
 
   let updatedTime = new Date(response.data.dt * 1000);
   let formattedUpdatedTime = updatedTime.toLocaleTimeString();
