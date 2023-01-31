@@ -1,11 +1,13 @@
 //switch mode button
-let darkModeTheme = document.querySelector("body");
-let switchToggle = document.querySelector("#switch-mode-button");
+
 function switchToDark() {
+  let darkModeTheme = document.querySelector("body");
   darkModeTheme.classList.toggle("dark");
   if (darkModeTheme.classList.contains("dark")) {
+    let switchToggle = document.querySelector("#switch-mode-button");
     switchToggle.innerHTML = `<i class="fa-solid fa-toggle-off"></i>`;
   } else {
+    let switchToggle = document.querySelector("#switch-mode-button");
     switchToggle.innerHTML = `<i class="fa-solid fa-toggle-on"></i>`;
   }
 }
@@ -14,10 +16,13 @@ toggleOnButton.addEventListener("click", switchToDark);
 
 function nightMode(hourNow) {
   if (hourNow > 17 || hourNow < 7) {
-    darkModeTheme.classList.add("dark");
+    let nightTimeTheme = document.querySelector("body");
+    nightTimeTheme.classList.add("dark");
     if (nightTimeTheme.classList.contains("dark")) {
+      let switchToggle = document.querySelector("#switch-mode-button");
       switchToggle.innerHTML = `<i class="fa-solid fa-toggle-off"></i>`;
     } else {
+      let switchToggle = document.querySelector("#switch-mode-button");
       switchToggle.innerHTML = `<i class="fa-solid fa-toggle-on"></i>`;
     }
   }
