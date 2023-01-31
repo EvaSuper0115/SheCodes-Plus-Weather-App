@@ -105,7 +105,12 @@ function showWeatherOfDefaultCity(response) {
   //
   let displayDefaultCityName = document.querySelector("#user-inputed-city");
   displayDefaultCityName.innerHTML = `${response.data.name}`;
-
+  //for reference for degree settings(see the global variable) at the bottom of page
+  celsius = `${Math.round(response.data.main.temp)}`;
+  highestCelsius = `${Math.round(response.data.main.temp_max)}`;
+  lowestCelsius = `${Math.round(response.data.main.temp_min)}`;
+  feelsLikeCelsius = `${Math.round(response.data.main.feels_like)}`;
+  //
   let celsiusDegreeOfDefaultCity = document.querySelector("#degree-number");
   celsiusDegreeOfDefaultCity.innerHTML = `${Math.round(
     response.data.main.temp
@@ -162,6 +167,12 @@ axios.get(defaultCityApiUrl).then(showWeatherOfDefaultCity);
 function showWeather(response) {
   let displayCityName = document.querySelector("#user-inputed-city");
   displayCityName.innerHTML = `${response.data.name}`;
+  //for reference for degree settings(see the global variable) at the bottom of page
+  celsius = `${Math.round(response.data.main.temp)}`;
+  highestCelsius = `${Math.round(response.data.main.temp_max)}`;
+  lowestCelsius = `${Math.round(response.data.main.temp_min)}`;
+  feelsLikeCelsius = `${Math.round(response.data.main.feels_like)}`;
+  //
 
   let celsiusDegreeOfUserSearch = document.querySelector("#degree-number");
   celsiusDegreeOfUserSearch.innerHTML = `${Math.round(
@@ -227,7 +238,12 @@ citySearchForm.addEventListener("submit", showCity);
 function showWeatherOfUserCurrentLocation(response) {
   let displayCityName = document.querySelector("#user-inputed-city");
   displayCityName.innerHTML = `${response.data.name}`;
-
+  //for reference for degree settings(see the global variable) at the bottom of page
+  celsius = `${Math.round(response.data.main.temp)}`;
+  highestCelsius = `${Math.round(response.data.main.temp_max)}`;
+  lowestCelsius = `${Math.round(response.data.main.temp_min)}`;
+  feelsLikeCelsius = `${Math.round(response.data.main.feels_like)}`;
+  //
   let celsiusDegreeOfUserCity = document.querySelector("#degree-number");
   celsiusDegreeOfUserCity.innerHTML = `${Math.round(response.data.main.temp)}`;
 
@@ -295,15 +311,30 @@ findCurrentLocationButton.addEventListener(
 //
 
 //degree settings
-/*function convertToFahrenheit() {
+
+let celsius = null;
+let highestCelsius = null;
+let lowestCelsius = null;
+let feelsLikeCelsius = null;
+
+function convertToFahrenheit(event) {
+  event.preventDefault();
+
   let fahrenheitDegreeNumber = document.querySelector("#degree-number");
-  fahrenheitDegreeNumber.innerHTML = `116`;
+  let fahrenheit = Math.round((celsius * 9) / 5 + 32);
+  fahrenheitDegreeNumber.innerHTML = `${fahrenheit}`;
 
   let fahrenheitHighestDegree = document.querySelector("#highest-degree");
-  fahrenheitHighestDegree.innerHTML = `65`;
+  let highestFahrenheit = Math.round((highestCelsius * 9) / 5 + 32);
+  fahrenheitHighestDegree.innerHTML = `Highest: ${highestFahrenheit}°`;
 
   let fahrenheitLowestDegree = document.querySelector("#lowest-degree");
-  fahrenheitLowestDegree.innerHTML = `45`;
+  let lowestFahrenheit = Math.round((lowestCelsius * 9) / 5 + 32);
+  fahrenheitLowestDegree.innerHTML = `Lowest: ${lowestFahrenheit}°`;
+
+  let fahrenheitFeelsLikeDegree = document.querySelector("#feels-like-degree");
+  let feelsLikeFahrenheit = Math.round((feelsLikeCelsius * 9) / 5 + 32);
+  fahrenheitFeelsLikeDegree.innerHTML = `Feels Like: ${feelsLikeFahrenheit}°`;
 }
 
 let fahrenheitConvertion = document.querySelector("#fahrenheit");
