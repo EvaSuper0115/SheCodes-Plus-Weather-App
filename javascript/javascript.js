@@ -35,9 +35,9 @@ nightMode(currentHour);
 //time and date
 
 let date = now.toDateString();
-
+/* not using this time, using last-updated-time
 let time = now.toLocaleTimeString();
-
+*/
 let todaysDate = document.querySelector("#date");
 todaysDate.innerHTML = `${date}`;
 //forecast dates//
@@ -85,46 +85,41 @@ weekdayNextDay5.innerHTML = `${weekdayTomorrow5}`;
 //time
 
 //
+//create global variables for the 3 functions 1.default 2.search form 3.current location
+let displayCityName = document.querySelector("#user-inputed-city");
+let weatherIcon = document.querySelector("#weatherNowIcon");
+let weatherDetailLine01 = document.querySelector("#weatherDetail-1");
+let weatherDetailLine02 = document.querySelector("#weatherDetail-2");
+let weatherDetailLine03 = document.querySelector("#weatherDetail-3");
+let lowestDegree = document.querySelector("#lowest-degree");
+let highestDegree = document.querySelector("#highest-degree");
+let weatherDetailLine04 = document.querySelector("#feels-like-degree");
 
-//Default city details(when first opening the website)
+// 1.Default city function (when first opening the website)
 
 function showWeatherOfDefaultCity(response) {
-  let displayDefaultCityName = document.querySelector("#user-inputed-city");
-  displayDefaultCityName.innerHTML = `${response.data.name}`;
+  displayCityName.innerHTML = `${response.data.name}`;
   //for reference for degree settings(see the global variable) at the bottom of page
   celsius = `${Math.round(response.data.main.temp)}`;
   highestCelsius = `${Math.round(response.data.main.temp_max)}`;
   lowestCelsius = `${Math.round(response.data.main.temp_min)}`;
   feelsLikeCelsius = `${Math.round(response.data.main.feels_like)}`;
   //
-  let celsiusDegreeOfDefaultCity = document.querySelector("#degree-number");
-  celsiusDegreeOfDefaultCity.innerHTML = `${celsius}`;
+  let celsiusDegree = document.querySelector("#degree-number");
+  celsiusDegree.innerHTML = `${celsius}`;
 
-  let weatherIcon = document.querySelector("#weatherNowIcon");
   weatherIcon.setAttribute(
     "src",
     `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
   weatherIcon.setAttribute("alt", `icon-id-${response.data.weather[0].icon}`);
-
-  let weatherDetailLine01 = document.querySelector("#weatherDetail-1");
   weatherDetailLine01.innerHTML = `${response.data.weather[0].description}`;
-
-  let weatherDetailLine02 = document.querySelector("#weatherDetail-2");
   weatherDetailLine02.innerHTML = `Humidity: ${response.data.main.humidity}%`;
-
-  let weatherDetailLine03 = document.querySelector("#weatherDetail-3");
   weatherDetailLine03.innerHTML = `Wind: ${Math.round(
     response.data.wind.speed
   )}mps`;
-
-  let lowestDegree = document.querySelector("#lowest-degree");
   lowestDegree.innerHTML = `Lowest: ${lowestCelsius}°`;
-
-  let highestDegree = document.querySelector("#highest-degree");
   highestDegree.innerHTML = `Highest: ${highestCelsius}°`;
-
-  let weatherDetailLine04 = document.querySelector("#feels-like-degree");
   weatherDetailLine04.innerHTML = `Feels Like: ${feelsLikeCelsius}°`;
 
   let updatedTime = new Date(response.data.dt * 1000);
@@ -141,15 +136,13 @@ let defaultCityApiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${def
 axios.get(defaultCityApiUrl).then(showWeatherOfDefaultCity);
 //
 
-//allow user to search for city as an input in the form
+// 2. allow user to search for city as an input in the form
 function showWeather(response) {
   //because celsius sign is a default active unit, and fahrenheit is not, "active" here means bold and bigger
 
   celsiusDegreeSign.classList.add("active");
-
   fahrenheitDegreeSign.classList.remove("active");
   //
-  let displayCityName = document.querySelector("#user-inputed-city");
   displayCityName.innerHTML = `${response.data.name}`;
   //for reference for degree settings(see the global variable) at the bottom of page
   celsius = `${Math.round(response.data.main.temp)}`;
@@ -157,35 +150,21 @@ function showWeather(response) {
   lowestCelsius = `${Math.round(response.data.main.temp_min)}`;
   feelsLikeCelsius = `${Math.round(response.data.main.feels_like)}`;
   //
-
   let celsiusDegreeOfUserSearch = document.querySelector("#degree-number");
   celsiusDegreeOfUserSearch.innerHTML = `${celsius}`;
 
-  let weatherIcon = document.querySelector("#weatherNowIcon");
   weatherIcon.setAttribute(
     "src",
     `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
   weatherIcon.setAttribute("alt", `icon-id-${response.data.weather[0].icon}`);
-
-  let weatherDetailLine01 = document.querySelector("#weatherDetail-1");
   weatherDetailLine01.innerHTML = `${response.data.weather[0].description}`;
-
-  let weatherDetailLine02 = document.querySelector("#weatherDetail-2");
   weatherDetailLine02.innerHTML = `Humidity: ${response.data.main.humidity}%`;
-
-  let weatherDetailLine03 = document.querySelector("#weatherDetail-3");
   weatherDetailLine03.innerHTML = `Wind: ${Math.round(
     response.data.wind.speed
   )}mps`;
-
-  let lowestDegree = document.querySelector("#lowest-degree");
   lowestDegree.innerHTML = `Lowest: ${lowestCelsius}°`;
-
-  let highestDegree = document.querySelector("#highest-degree");
   highestDegree.innerHTML = `Highest: ${highestCelsius}°`;
-
-  let weatherDetailLine04 = document.querySelector("#feels-like-degree");
   weatherDetailLine04.innerHTML = `Feels Like: ${feelsLikeCelsius}°`;
 
   let updatedTime = new Date(response.data.dt * 1000);
@@ -210,15 +189,13 @@ citySearchForm.addEventListener("submit", showCity);
 
 //
 
-//allow user to click current location button
+// 3. allow user to click current location button
 function showWeatherOfUserCurrentLocation(response) {
   //because celsius sign is a default active unit, and fahrenheit is not, "active" here means bold and bigger
 
   celsiusDegreeSign.classList.add("active");
-
   fahrenheitDegreeSign.classList.remove("active");
   //
-  let displayCityName = document.querySelector("#user-inputed-city");
   displayCityName.innerHTML = `${response.data.name}`;
   //for reference for degree settings(see the global variable) at the bottom of page
   celsius = `${Math.round(response.data.main.temp)}`;
@@ -228,32 +205,18 @@ function showWeatherOfUserCurrentLocation(response) {
   //
   let celsiusDegreeOfUserCity = document.querySelector("#degree-number");
   celsiusDegreeOfUserCity.innerHTML = `${celsius}`;
-
-  let weatherIcon = document.querySelector("#weatherNowIcon");
   weatherIcon.setAttribute(
     "src",
     `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
   weatherIcon.setAttribute("alt", `icon-id-${response.data.weather[0].icon}`);
-
-  let weatherDetailLine01 = document.querySelector("#weatherDetail-1");
   weatherDetailLine01.innerHTML = `${response.data.weather[0].description}`;
-
-  let weatherDetailLine02 = document.querySelector("#weatherDetail-2");
   weatherDetailLine02.innerHTML = `Humidity: ${response.data.main.humidity}%`;
-
-  let weatherDetailLine03 = document.querySelector("#weatherDetail-3");
   weatherDetailLine03.innerHTML = `Wind: ${Math.round(
     response.data.wind.speed
   )}mps`;
-
-  let lowestDegree = document.querySelector("#lowest-degree");
   lowestDegree.innerHTML = `Lowest: ${lowestCelsius}°`;
-
-  let highestDegree = document.querySelector("#highest-degree");
   highestDegree.innerHTML = `Highest: ${highestCelsius}°`;
-
-  let weatherDetailLine04 = document.querySelector("#feels-like-degree");
   weatherDetailLine04.innerHTML = `Feels Like: ${feelsLikeCelsius}°`;
 
   let updatedTime = new Date(response.data.dt * 1000);
@@ -299,7 +262,6 @@ function convertToFahrenheit(event) {
   event.preventDefault();
 
   celsiusDegreeSign.classList.remove("active");
-
   fahrenheitDegreeSign.classList.add("active");
 
   let fahrenheitDegreeNumber = document.querySelector("#degree-number");
@@ -326,7 +288,6 @@ function convertToCelsius(event) {
   event.preventDefault();
 
   celsiusDegreeSign.classList.add("active");
-
   fahrenheitDegreeSign.classList.remove("active");
 
   let celsiusDegreeNumber = document.querySelector("#degree-number");
