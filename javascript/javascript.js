@@ -41,8 +41,34 @@ let time = now.toLocaleTimeString();
 let todaysDate = document.querySelector("#date");
 todaysDate.innerHTML = `${date}`;
 //forecast dates//
-let weekdays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
+let forecastElement = document.querySelector("#forecast-for-each-day");
+let forecastHTML = ``;
+let weekdays = ["Sun", "Mon", "Tue", "Wed", "Thu"];
+weekdays.forEach(function (day) {
+  forecastHTML =
+    forecastHTML +
+    `<div class="row forecastWholeRow">
+    <div class="col-2"></div>
+          <div class="col-3">
+            <div class="nextDay1">
+              
+               <h5 id="weekday-nextday-1"> ${day}</h5>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="nextDay1-weather">
+              <h3 class="forecastIcon card-text"><i class="fa-solid fa-sun"></i></h3>
+              <h5 class="forecastDegree card-text">24°</h5>
+           </div>
+            <div class="col-1"></div>
+          </div>
+          </div>`;
+
+  forecastHTML = forecastHTML + ``;
+  forecastElement.innerHTML = forecastHTML;
+});
+/*
 let tomorrow = new Date();
 tomorrow.setDate(now.getDate() + 1);
 let nextDayOne = document.querySelector("#date-nextday-1");
@@ -82,6 +108,7 @@ nextDayFive.innerHTML = `${fourDayAfterTomorrow.toLocaleDateString()}`;
 let weekdayTomorrow5 = weekdays[fourDayAfterTomorrow.getDay()];
 let weekdayNextDay5 = document.querySelector("#weekday-nextday-5");
 weekdayNextDay5.innerHTML = `${weekdayTomorrow5}`;
+*/
 //time
 
 //
