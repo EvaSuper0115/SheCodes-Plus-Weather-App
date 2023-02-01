@@ -41,15 +41,15 @@ let time = now.toLocaleTimeString();
 let todaysDate = document.querySelector("#date");
 todaysDate.innerHTML = `${date}`;
 //forecast dates//
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast-for-each-day");
+  let forecastHTML = ``;
+  let weekdays = ["Sun", "Mon", "Tue", "Wed", "Thu"];
 
-let forecastElement = document.querySelector("#forecast-for-each-day");
-let forecastHTML = ``;
-let weekdays = ["Sun", "Mon", "Tue", "Wed", "Thu"];
-
-weekdays.forEach(function (day) {
-  forecastHTML =
-    forecastHTML +
-    `<div class="row forecastWholeRow">
+  weekdays.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `<div class="row forecastWholeRow">
        <div class="col-2"></div>
        <div class="col-3">
          <div class="nextDay1">
@@ -65,10 +65,10 @@ weekdays.forEach(function (day) {
          <div class="col-1"></div>
        </div>
      </div>`;
-});
-forecastHTML = forecastHTML + ``;
-forecastElement.innerHTML = forecastHTML;
-
+  });
+  forecastHTML = forecastHTML + ``;
+  forecastElement.innerHTML = forecastHTML;
+}
 /*
 let tomorrow = new Date();
 tomorrow.setDate(now.getDate() + 1);
@@ -276,7 +276,7 @@ findCurrentLocationButton.addEventListener(
   searchUserLocationWeatherButton
 );
 //
-
+displayForecast();
 //degree settings
 
 let celsius = null;
