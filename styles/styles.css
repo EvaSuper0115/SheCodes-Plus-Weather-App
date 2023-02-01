@@ -269,6 +269,11 @@ body {
 .dark .search-bar {
   box-shadow: 2px 3px 44px rgba(250, 250, 250, 0.3);
 }
+.dark #last-updated-title,
+.dark #last-updated-time,
+.dark #date {
+  color: #dddddf;
+}
 
 .dark .forecastPageTitle,
 .dark .forecastDate,
@@ -295,9 +300,4 @@ body {
 .dark #celsius:hover,
 .dark #fahrenheit:hover {
   background: rgba(200, 201, 204, 0.4);
-}
-
-.dark #time-now,
-.dark #date {
-  color: rgba(211, 222, 249, 0.8);
 }
