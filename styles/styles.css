@@ -240,15 +240,31 @@ body {
 
 .forecastIcon {
   display: inline;
-  font-size: 30px;
+  width: 60px;
   margin-left: -25px;
   color: #79797d;
 }
+/*
 .forecastDegree {
   display: inline;
   font-size: 36px;
   margin-left: 24px;
   font-weight: 300;
+}
+*/
+#forecastMinCelsius {
+  font-size: 28px;
+  display: inline;
+  opacity: 0.6;
+  margin-right: 10px;
+}
+#forecastMaxCelsius {
+  font-size: 28px;
+  display: inline;
+}
+.downArrow,
+.upArrow {
+  font-size: 10px;
 }
 
 #footer {
