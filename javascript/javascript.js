@@ -68,7 +68,7 @@ weekdays.forEach(function (day) {
 });
 forecastHTML = forecastHTML + ``;
 forecastElement.innerHTML = forecastHTML;
-console.log(forecastHTML);
+
 /*
 let tomorrow = new Date();
 tomorrow.setDate(now.getDate() + 1);
