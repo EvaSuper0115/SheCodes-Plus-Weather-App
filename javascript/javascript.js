@@ -57,14 +57,15 @@ function formatForecastDays(timestamp) {
 
 function displayForecast(response) {
   let forecastForEachDay = response.data.daily;
-  console.log(forecastForEachDay);
+
   let forecastElement = document.querySelector("#forecast-for-each-day");
   let forecastHTML = ``;
 
-  forecastForEachDay.forEach(function (forecastDay) {
-    forecastHTML =
-      forecastHTML +
-      `<div class="row forecastWholeRow">
+  forecastForEachDay.forEach(function (forecastDay, index) {
+    if (index < 5) {
+      forecastHTML =
+        forecastHTML +
+        `<div class="row forecastWholeRow">
        <div class="col-2"></div>
        <div class="col-3">
          <div class="nextDays">
@@ -93,6 +94,7 @@ function displayForecast(response) {
          <div class="col-1"></div>
        </div>
      </div>`;
+    }
   });
   forecastHTML = forecastHTML + ``;
   forecastElement.innerHTML = forecastHTML;
@@ -106,48 +108,6 @@ function sendCoordToForecast(coords) {
 
   axios.get(ForecastApiUrl).then(displayForecast);
 }
-/*
-let tomorrow = new Date();
-tomorrow.setDate(now.getDate() + 1);
-let nextDayOne = document.querySelector("#date-nextday-1");
-nextDayOne.innerHTML = `${tomorrow.toLocaleDateString()}`;
-let weekdayTomorrow = weekdays[tomorrow.getDay()];
-let weekdayNextDay1 = document.querySelector("#weekday-nextday-1");
-weekdayNextDay1.innerHTML = `${weekdayTomorrow}`;
-
-let oneDayAfterTomorrow = new Date();
-oneDayAfterTomorrow.setDate(now.getDate() + 2);
-let nextDayTwo = document.querySelector("#date-nextday-2");
-nextDayTwo.innerHTML = `${oneDayAfterTomorrow.toLocaleDateString()}`;
-let weekdayTomorrow2 = weekdays[oneDayAfterTomorrow.getDay()];
-let weekdayNextDay2 = document.querySelector("#weekday-nextday-2");
-weekdayNextDay2.innerHTML = `${weekdayTomorrow2}`;
-
-let twoDayAfterTomorrow = new Date();
-twoDayAfterTomorrow.setDate(now.getDate() + 3);
-let nextDayThree = document.querySelector("#date-nextday-3");
-nextDayThree.innerHTML = `${twoDayAfterTomorrow.toLocaleDateString()}`;
-let weekdayTomorrow3 = weekdays[twoDayAfterTomorrow.getDay()];
-let weekdayNextDay3 = document.querySelector("#weekday-nextday-3");
-weekdayNextDay3.innerHTML = `${weekdayTomorrow3}`;
-
-let threeDayAfterTomorrow = new Date();
-threeDayAfterTomorrow.setDate(now.getDate() + 4);
-let nextDayFour = document.querySelector("#date-nextday-4");
-nextDayFour.innerHTML = `${threeDayAfterTomorrow.toLocaleDateString()}`;
-let weekdayTomorrow4 = weekdays[threeDayAfterTomorrow.getDay()];
-let weekdayNextDay4 = document.querySelector("#weekday-nextday-4");
-weekdayNextDay4.innerHTML = `${weekdayTomorrow4}`;
-
-let fourDayAfterTomorrow = new Date();
-fourDayAfterTomorrow.setDate(now.getDate() + 5);
-let nextDayFive = document.querySelector("#date-nextday-5");
-nextDayFive.innerHTML = `${fourDayAfterTomorrow.toLocaleDateString()}`;
-let weekdayTomorrow5 = weekdays[fourDayAfterTomorrow.getDay()];
-let weekdayNextDay5 = document.querySelector("#weekday-nextday-5");
-weekdayNextDay5.innerHTML = `${weekdayTomorrow5}`;
-*/
-//time
 
 //
 //create global variables for the 3 functions 1.default 2.search form 3.current location
@@ -239,6 +199,9 @@ function showWeather(response) {
   let formattedUpdatedTime = updatedTime.toLocaleTimeString();
   let timeNow = document.querySelector("#last-updated-time");
   timeNow.innerHTML = `${formattedUpdatedTime}`;
+
+  let coord = response.data.coord;
+  sendCoordToForecast(coord);
 }
 
 function showCity(event) {
@@ -291,6 +254,9 @@ function showWeatherOfUserCurrentLocation(response) {
   let formattedUpdatedTime = updatedTime.toLocaleTimeString();
   let timeNow = document.querySelector("#last-updated-time");
   timeNow.innerHTML = `${formattedUpdatedTime}`;
+
+  let coord = response.data.coord;
+  sendCoordToForecast(coord);
 }
 
 function showCurrentLocation(position) {
@@ -299,6 +265,7 @@ function showCurrentLocation(position) {
   let metricUnit = "units=metric";
   let lat = position.coords.latitude;
   let lon = position.coords.longitude;
+
   let userCityApiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&${metricUnit}&appid=${apiKey}`;
   axios.get(userCityApiUrl).then(showWeatherOfUserCurrentLocation);
 }
