@@ -41,6 +41,20 @@ let time = now.toLocaleTimeString();
 let todaysDate = document.querySelector("#date");
 todaysDate.innerHTML = `${date}`;
 //forecast dates//
+
+function formatForecastDates(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let formattedDates = date.toLocaleDateString();
+  return formattedDates;
+}
+
+function formatForecastDays(timestamp) {
+  let weekdays = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
+  let days = new Date(timestamp * 1000);
+  let formattedDays = weekdays[days.getDay()];
+  return formattedDays;
+}
+
 function displayForecast(response) {
   let forecastForEachDay = response.data.daily;
   console.log(forecastForEachDay);
@@ -53,13 +67,13 @@ function displayForecast(response) {
       `<div class="row forecastWholeRow">
        <div class="col-2"></div>
        <div class="col-3">
-         <div class="nextDay1">
-          <h5 class="forecastDate"> </h5>
-          <h5 id="weekday-nextday-1"> ${forecastDay.dt}</h5>
+         <div class="nextDays">
+          <h5 id="forecastDate">${formatForecastDates(forecastDay.dt)} </h5>
+          <h5 id="forecastWeekdays"> ${formatForecastDays(forecastDay.dt)}</h5>
          </div>
        </div>
        <div class="col-6">
-          <div class="nextDay1-weather">
+          <div class="nextDays-weather">
            
                <img id="weatherForecastIcons" class="forecastIcon card-text" 
          

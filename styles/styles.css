@@ -179,27 +179,12 @@ body {
 .NextFiveDays {
   text-align: center;
 }
-#weekday-nextday-1,
-#weekday-nextday-2,
-#weekday-nextday-3,
-#weekday-nextday-4,
-#weekday-nextday-5 {
-  font-size: 25px;
-}
-.nextDay1,
-.nextDay2,
-.nextDay3,
-.nextDay4,
-.nextDay5,
-.nextDay1-weather,
-.nextDay2-weather,
-.nextDay3-weather,
-.nextDay4-weather,
-.nextDay5-weather {
+
+.nextDays-weather {
   margin-top: 2px;
   margin-bottom: 2px;
   margin-left: 0;
-  margin-right: 0;
+  margin-right: 24px;
 
   max-width: 200px;
   min-width: 100px;
@@ -211,29 +196,23 @@ body {
   text-align: right;
 }
 
-.nextDay1-weather,
-.nextDay2-weather,
-.nextDay3-weather,
-.nextDay4-weather,
-.nextDay5-weather {
-  text-align: center;
-}
 .forecastWholeRow {
   width: auto;
-  border-radius: 50px;
-  margin: 0px 2px;
+  border-radius: 8px;
+  margin: 9px 9px;
   transition: all 200ms ease-in-out;
 }
 .forecastWholeRow:hover {
-  padding: 10px;
   box-shadow: 0px 30px 50px rgb(57 48 90 / 10%);
   background: rgba(222, 222, 223, 0.2);
 }
-
-.forecastDate {
+#forecastWeekdays {
+  text-align: right;
+}
+#forecastDate {
   text-align: left;
-  font-size: 16px;
-  position: relative;
+  font-size: 11px;
+  margin-top: 11px;
   color: #79797d;
   font-weight: 500;
 }
@@ -253,13 +232,14 @@ body {
 }
 */
 #forecastMinCelsius {
-  font-size: 28px;
+  font-size: 25px;
   display: inline;
-  opacity: 0.6;
-  margin-right: 10px;
+  opacity: 0.7;
+  margin-right: 16px;
+  margin-left: 2px;
 }
 #forecastMaxCelsius {
-  font-size: 28px;
+  font-size: 25px;
   display: inline;
 }
 .downArrow,
@@ -295,11 +275,7 @@ body {
 .dark .forecastDate,
 .dark .forecastDegree,
 .dark .forecastIcon,
-.dark #weekday-nextday-1,
-.dark #weekday-nextday-2,
-.dark #weekday-nextday-3,
-.dark #weekday-nextday-4,
-.dark #weekday-nextday-5 {
+.dark .nextDays {
   color: hsl(0, 0%, 90%);
 }
 .dark .pagePaddingWeatherToday {
@@ -316,4 +292,11 @@ body {
 .dark #celsius:hover,
 .dark #fahrenheit:hover {
   background: rgba(200, 201, 204, 0.4);
+}
+.dark .forecastWholeRow:hover {
+  background: rgba(164, 182, 254, 0.2);
+}
+.dark #forecastMinCelsius,
+.dark #forecastMaxCelsius {
+  color: #dddddf;
 }
