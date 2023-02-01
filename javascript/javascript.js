@@ -45,29 +45,30 @@ todaysDate.innerHTML = `${date}`;
 let forecastElement = document.querySelector("#forecast-for-each-day");
 let forecastHTML = ``;
 let weekdays = ["Sun", "Mon", "Tue", "Wed", "Thu"];
+
 weekdays.forEach(function (day) {
   forecastHTML =
     forecastHTML +
     `<div class="row forecastWholeRow">
-    <div class="col-2"></div>
-          <div class="col-3">
-            <div class="nextDay1">
-              
-               <h5 id="weekday-nextday-1"> ${day}</h5>
-            </div>
-          </div>
-          <div class="col-6">
-            <div class="nextDay1-weather">
-              <h3 class="forecastIcon card-text"><i class="fa-solid fa-sun"></i></h3>
-              <h5 class="forecastDegree card-text">24°</h5>
+       <div class="col-2"></div>
+       <div class="col-3">
+         <div class="nextDay1">
+          <h5 class="forecastDate"> </h5>
+          <h5 id="weekday-nextday-1"> ${day}</h5>
+         </div>
+       </div>
+       <div class="col-6">
+          <div class="nextDay1-weather">
+            <h3 class="forecastIcon card-text"><i class="fa-solid fa-sun"></i></h3>
+            <h5 class="forecastDegree card-text">24°</h5>
            </div>
-            <div class="col-1"></div>
-          </div>
-          </div>`;
-
-  forecastHTML = forecastHTML + ``;
-  forecastElement.innerHTML = forecastHTML;
+         <div class="col-1"></div>
+       </div>
+     </div>`;
 });
+forecastHTML = forecastHTML + ``;
+forecastElement.innerHTML = forecastHTML;
+console.log(forecastHTML);
 /*
 let tomorrow = new Date();
 tomorrow.setDate(now.getDate() + 1);
